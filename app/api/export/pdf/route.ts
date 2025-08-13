@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
-import puppeteer from "puppeteer";
+import chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-core";
 import {
 	buildSalesReportHTML,
 	type ProductEntryDTO,
@@ -16,10 +17,13 @@ export async function POST(req: NextRequest) {
 
 		const html = buildSalesReportHTML(currentDate, products);
 
-		const browser = await puppeteer.launch({
-			headless: true,
-			args: ["--no-sandbox", "--disable-setuid-sandbox"],
-		});
+        const executablePath = await chromium.executablePath();
+        const browser = await puppeteer.launch({
+            args: chromium.args,
+            defaultViewport: chromium.defaultViewport,
+            executablePath,
+            headless: chromium.headless,
+        });
 		const page = await browser.newPage();
 		await page.setContent(html, { waitUntil: "networkidle0" });
 
