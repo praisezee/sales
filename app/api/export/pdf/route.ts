@@ -20,9 +20,8 @@ export async function POST(req: NextRequest) {
         const executablePath = await chromium.executablePath();
         const browser = await puppeteer.launch({
             args: chromium.args,
-            defaultViewport: chromium.defaultViewport,
-            executablePath,
-            headless: chromium.headless,
+            executablePath: executablePath || undefined,
+            headless: true,
         });
 		const page = await browser.newPage();
 		await page.setContent(html, { waitUntil: "networkidle0" });

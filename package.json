@@ -6,8 +6,7 @@
 		"build": "next build",
 		"dev": "next dev",
 		"lint": "next lint",
-		"start": "next start",
-		"postinstall": "yarn puppeteer browsers install chrome"
+		"start": "next start"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.10.0",
