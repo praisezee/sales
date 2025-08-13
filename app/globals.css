@@ -1,0 +1,393 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Enhanced artistic color palette with premium blues and sophisticated neutrals */
+  --background: rgb(252, 252, 253);
+  --foreground: rgb(51, 51, 61);
+  --card: rgb(249, 250, 251);
+  --card-foreground: rgb(64, 64, 74);
+  --popover: rgb(252, 252, 253);
+  --popover-foreground: rgb(51, 51, 61);
+  --primary: rgb(59, 130, 246); /* Premium blue-600 equivalent */
+  --primary-foreground: rgb(249, 250, 251);
+  --secondary: rgb(244, 244, 245);
+  --secondary-foreground: rgb(77, 77, 87);
+  --muted: rgb(247, 248, 248);
+  --muted-foreground: rgb(128, 128, 138);
+  --accent: rgb(6, 182, 212); /* Cyan-500 equivalent for highlights */
+  --accent-foreground: rgb(249, 250, 251);
+  --destructive: rgb(239, 68, 68);
+  --destructive-foreground: rgb(249, 250, 251);
+  --border: rgb(235, 235, 237);
+  --input: rgb(240, 240, 242);
+  --ring: rgb(59, 130, 246);
+  --chart-1: rgb(59, 130, 246); /* Primary blue */
+  --chart-2: rgb(6, 182, 212); /* Accent cyan */
+  --chart-3: rgb(147, 51, 234); /* Purple variant */
+  --chart-4: rgb(20, 184, 166); /* Teal variant */
+  --chart-5: rgb(236, 72, 153); /* Pink variant */
+  --radius: 0.75rem;
+  --sidebar: rgb(249, 250, 251);
+  --sidebar-foreground: rgb(64, 64, 74);
+  --sidebar-primary: rgb(59, 130, 246);
+  --sidebar-primary-foreground: rgb(249, 250, 251);
+  --sidebar-accent: rgb(244, 244, 245);
+  --sidebar-accent-foreground: rgb(77, 77, 87);
+  --sidebar-border: rgb(235, 235, 237);
+  --sidebar-ring: rgb(59, 130, 246);
+}
+
+.dark {
+  /* Dark mode with sophisticated contrast and premium feel */
+  --background: rgb(20, 20, 25);
+  --foreground: rgb(242, 242, 245);
+  --card: rgb(26, 26, 31);
+  --card-foreground: rgb(237, 237, 240);
+  --popover: rgb(20, 20, 25);
+  --popover-foreground: rgb(242, 242, 245);
+  --primary: rgb(6, 182, 212); /* Brighter accent in dark mode */
+  --primary-foreground: rgb(20, 20, 25);
+  --secondary: rgb(38, 38, 43);
+  --secondary-foreground: rgb(229, 229, 232);
+  --muted: rgb(31, 31, 36);
+  --muted-foreground: rgb(166, 166, 176);
+  --accent: rgb(59, 130, 246); /* Primary blue as accent in dark */
+  --accent-foreground: rgb(242, 242, 245);
+  --destructive: rgb(248, 113, 113);
+  --destructive-foreground: rgb(242, 242, 245);
+  --border: rgb(46, 46, 51);
+  --input: rgb(38, 38, 43);
+  --ring: rgb(6, 182, 212);
+  --chart-1: rgb(6, 182, 212); /* Accent cyan */
+  --chart-2: rgb(59, 130, 246); /* Primary blue */
+  --chart-3: rgb(147, 51, 234); /* Purple variant */
+  --chart-4: rgb(20, 184, 166); /* Teal variant */
+  --chart-5: rgb(236, 72, 153); /* Pink variant */
+  --sidebar: rgb(26, 26, 31);
+  --sidebar-foreground: rgb(237, 237, 240);
+  --sidebar-primary: rgb(6, 182, 212);
+  --sidebar-primary-foreground: rgb(20, 20, 25);
+  --sidebar-accent: rgb(38, 38, 43);
+  --sidebar-accent-foreground: rgb(229, 229, 232);
+  --sidebar-border: rgb(46, 46, 51);
+  --sidebar-ring: rgb(6, 182, 212);
+}
+
+@theme inline {
+  /* Adding custom font variables for artistic typography */
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-dm-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  /* Custom font utility classes for artistic typography */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  /* Enhanced animations with more variety and smoothness */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass-effect {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Enhanced glass effect with better mobile support */
+  .glass-card {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .glass-card {
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Hover effects for better interactivity */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark .hover-lift:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Mobile-optimized touch interactions */
+  .touch-action {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Smooth scrolling for mobile */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Enhanced keyframe animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.6);
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradient backgrounds for premium feel */
+.gradient-bg {
+  background: linear-gradient(135deg, rgb(252, 252, 253) 0%, rgb(247, 248, 248) 50%, rgb(242, 242, 245) 100%);
+}
+
+.dark .gradient-bg {
+  background: linear-gradient(135deg, rgb(20, 20, 25) 0%, rgb(26, 26, 31) 50%, rgb(31, 31, 36) 100%);
+}
+
+/* Enhanced gradient backgrounds with mobile optimization */
+.gradient-hero {
+  background: linear-gradient(
+    135deg,
+    rgb(252, 252, 253) 0%,
+    rgb(247, 248, 248) 25%,
+    rgb(242, 242, 245) 50%,
+    rgb(247, 248, 248) 75%,
+    rgb(252, 252, 253) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.dark .gradient-hero {
+  background: linear-gradient(
+    135deg,
+    rgb(20, 20, 25) 0%,
+    rgb(26, 26, 31) 25%,
+    rgb(31, 31, 36) 50%,
+    rgb(26, 26, 31) 75%,
+    rgb(20, 20, 25) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive typography improvements */
+@media (max-width: 640px) {
+  .responsive-text-hero {
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .responsive-text-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.2;
+  }
+}
+
+/* Enhanced focus states for accessibility */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+/* Loading skeleton animations */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted-foreground) / 0.1) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
